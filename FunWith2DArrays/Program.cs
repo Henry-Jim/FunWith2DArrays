@@ -16,11 +16,34 @@ namespace FunWith2DArrays
         {
             Console.WriteLine("Welcome to Dynamic Grid");
 
-            Console.WriteLine("Enter the number of rows:");
-            int row = int.Parse(Console.ReadLine());
+            int row, col;
 
-            Console.WriteLine("Enter the number of columns:");
-            int col = int.Parse(Console.ReadLine());
+            while (true)
+            {
+                Console.WriteLine("Enter the number of rows");
+                if (int.TryParse(Console.ReadLine(), out row) && row > 0) // Converts input input into integer and make sure it is greater than 0
+                {
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine($"{INVALID_INPUT}! Please enter a positive number for row");
+                }
+            }
+
+            while (true)
+            {
+                Console.WriteLine("Enter the number of columns");
+                if (int.TryParse(Console.ReadLine(), out col) && col > 0)
+                {
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine($"{INVALID_INPUT}! Please enter a positive number for column");
+                }
+            }
+
 
             char[,] grid = new char[row, col];
 
