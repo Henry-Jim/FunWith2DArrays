@@ -68,7 +68,9 @@ namespace FunWith2DArrays
                     for (int j = 0; j < col; j++)
                     {
                         Console.WriteLine($"Enter a value for cell {i},{j}");
-                        grid[i, j] = Console.ReadLine()[0];
+                        char input = Console.ReadKey().KeyChar; // Read char safely
+                        Console.ReadLine(); // New line
+                        grid[i, j] = input; // Assign to grid
                     }
                 }
             }
