@@ -12,6 +12,8 @@ namespace FunWith2DArrays
         const string CHOICE_NUMBERED = "numbered";
         const string CHOICE_COORDINATE = "coordinate";
         const string INVALID_INPUT = "Invalid Input";
+        const int ASCII_START = 33;
+        const int ASCII_END = 126;
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to Dynamic Grid");
@@ -21,7 +23,7 @@ namespace FunWith2DArrays
             while (true)
             {
                 Console.WriteLine("Enter the number of rows");
-                if (int.TryParse(Console.ReadLine(), out row) && row > 0) // Converts input input into integer and make sure it is greater than 0
+                if (int.TryParse(Console.ReadLine(), out row) && row > 0) // Converts input into integer and make sure it is greater than 0
                 {
                     break;
                 }
@@ -56,7 +58,7 @@ namespace FunWith2DArrays
                 for (int i = 0; i < row;  i++)
                 {
                     for (int j = 0; j < col; j++)
-                        grid[i, j] = (char)rng.Next(33, 126); // Randomly select ASCII symbols
+                        grid[i, j] = (char)rng.Next(ASCII_START, ASCII_END); // Randomly select ASCII symbols
                 }
             }
             else if(choice.ToLower() == CHOICE_CUSTOM )
