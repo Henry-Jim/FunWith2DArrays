@@ -67,10 +67,23 @@ namespace FunWith2DArrays
                 {
                     for (int j = 0; j < col; j++)
                     {
-                        Console.WriteLine($"Enter a value for cell {i},{j}");
-                        char input = Console.ReadKey().KeyChar; // Read char safely
-                        Console.ReadLine(); // New line
-                        grid[i, j] = input; // Assign to grid
+                        char inputChar;
+                        while(true) // Loops until valid input
+                        {
+                            Console.WriteLine($"Enter a character for cell {i}, {j}:");
+                            string input = Console.ReadLine();
+
+                            if (!string.IsNullOrEmpty(input) && input.Length == 1)
+                            {
+                                inputChar = input[0];
+                                break;
+                            }
+
+                            Console.WriteLine($"{INVALID_INPUT}! Try again");
+
+                        }
+
+                        grid[i, j] = inputChar;
                     }
                 }
             }
