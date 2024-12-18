@@ -12,8 +12,22 @@ namespace FunWith2DArrays
         const string CHOICE_NUMBERED = "numbered";
         const string CHOICE_COORDINATE = "coordinate";
         const string INVALID_INPUT = "Invalid Input";
+
+        // ASCII const
         const int ASCII_START = 33;
         const int ASCII_END = 126;
+
+        // Display Choices
+        const int MODE_NUMBERED = 1;
+        const int MODE_COORDINATE = 2;
+        const int MODE_CHESSBOARD = 3;
+        const int MODE_HIGHLIGHT_GRID = 4;
+
+        // Grid Symbols
+        const char SYMBOL_CHESSBOARD_X = 'X';
+        const char SYMBOL_CHESSBOARD_O = 'O';
+        const char SYMBOL_BORDER = '#';
+        
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to Dynamic Grid");
@@ -109,11 +123,11 @@ namespace FunWith2DArrays
             Console.WriteLine($"3: {CHOICE_CHESSBOARD}");
             Console.WriteLine($"4: {CHOICE_HIGHLIGHT_GRID}");
 
-            int displayChoice = Convert.ToInt32(Console.ReadLine());
+            int mode = Convert.ToInt32(Console.ReadLine());
 
-            switch (displayChoice)
+            switch (mode)
             {
-                case 1:
+                case MODE_NUMBERED:
                     for (int i = 0; i < row; i++)
                     {
                         for (int j = 0; j < col; j++)
@@ -137,7 +151,7 @@ namespace FunWith2DArrays
 
                     break;
 
-                case 2:
+                case MODE_COORDINATE:
                     for (int i = 0; i < row; i++)
                     {
                         for (int j = 0; j < col;j++)
@@ -162,18 +176,18 @@ namespace FunWith2DArrays
 
                     break;
 
-                case 3:
+                case MODE_CHESSBOARD:
                     for (int i = 0; i < row;i++)
                     {
                         for (int j = 0; j < col; j++)
                         {
                             if ((i + j) % 2 == 0) // If the number is divisible by 2
                             {
-                                grid[i, j] = 'X';
+                                grid[i, j] = SYMBOL_CHESSBOARD_X;
                             }
                             else
                             {
-                                grid[i, j] = 'O';
+                                grid[i, j] = SYMBOL_CHESSBOARD_O;
                             }
                             Console.Write(grid[i, j] + " ");
                         }
@@ -182,14 +196,14 @@ namespace FunWith2DArrays
 
                     break;
 
-                case 4:
+                case MODE_HIGHLIGHT_GRID:
                     for (int i = 0; i < row; i++)
                     {
                         for (int j = 0; j < col; j++)
                         {
                             if (i == 0 || i == row -1 || j == 0 || j == col -1) // Boarder position
                             {
-                                grid[i, j] = '#';
+                                grid[i, j] = SYMBOL_BORDER;
                             }
                             Console.Write(grid[i, j] + " ");
                         }
